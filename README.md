@@ -122,16 +122,16 @@ npm install
 cd ..
 ```
 
-### 4. Configure environment variables
+### 4. Configure environment variables (Optional)
 
-Edit `server/.env` — it ships with safe defaults, but update `DB_PASSWORD` if your PostgreSQL user has a password:
+The app ships with safe defaults (user: `postgres`, password: `postgres`). If your PostgreSQL installation requires a different username or password, create a file named `.env` inside the `server/` directory:
 
 ```env
 DB_HOST=localhost
 DB_PORT=5432
 DB_NAME=dayex_db
 DB_USER=postgres
-DB_PASSWORD=postgres   # ← change this if needed
+DB_PASSWORD=your_actual_password
 
 PORT=3001
 ```
