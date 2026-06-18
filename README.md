@@ -108,21 +108,14 @@ git clone https://github.com/jeswintesting-spec/DayEx.git
 cd DayEx
 ```
 
-### 2. Install frontend dependencies
+### 2. Install dependencies
 
 ```bash
 npm install
 ```
+> *Note: This automatically installs both frontend and backend dependencies.*
 
-### 3. Install backend dependencies
-
-```bash
-cd server
-npm install
-cd ..
-```
-
-### 4. Configure environment variables (Optional)
+### 3. Configure environment variables (Optional)
 
 The app ships with safe defaults (user: `postgres`, password: `postgres`). If your PostgreSQL installation requires a different username or password, create a file named `.env` inside the `server/` directory:
 
@@ -136,34 +129,22 @@ DB_PASSWORD=your_actual_password
 PORT=3001
 ```
 
-### 5. Create the database
-
-Depending on your operating system, open a terminal (or command prompt) and run the command to create the database:
-
-**macOS (if using Postgres.app):**
-```bash
-/Applications/Postgres.app/Contents/Versions/18/bin/psql -U postgres -c "CREATE DATABASE dayex_db;"
-```
-
-**Windows / macOS (Homebrew) / Linux (with configured paths):**
-```bash
-psql -U postgres -c "CREATE DATABASE dayex_db;"
-```
-
-> **Note for Linux users:** You may need to run this as the postgres user:
-> `sudo -u postgres psql -c "CREATE DATABASE dayex_db;"`
-
-### 6. Run migrations & seed data
+### 4. Setup the database
 
 ```bash
-cd server
-node migrate.js
-cd ..
+npm run setup
 ```
+
+This script will automatically:
+1. Connect to your PostgreSQL server
+2. Create the `dayex_db` database if it doesn't exist
+3. Create the required tables
+4. Seed it with a default budget and sample expenses
 
 Expected output:
 ```
-✅ Connected to PostgreSQL database
+⏳ Database "dayex_db" does not exist. Creating...
+✅ Database "dayex_db" created successfully!
 🔧 Running migrations...
 ✅ Table "expenses" ready
 ✅ Table "budget" ready

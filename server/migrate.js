@@ -1,7 +1,39 @@
 require('dotenv').config();
-const pool = require('./db');
+const { Client } = require('pg');
+
+async function createDatabaseIfNotExists() {
+  const dbName = process.env.DB_NAME || 'dayex_db';
+  const client = new Client({
+    host: process.env.DB_HOST || 'localhost',
+    port: parseInt(process.env.DB_PORT || '5432'),
+    user: process.env.DB_USER || 'postgres',
+    password: process.env.DB_PASSWORD || 'postgres',
+    database: 'postgres', // connect to default system database
+  });
+
+  try {
+    await client.connect();
+    const res = await client.query(`SELECT 1 FROM pg_database WHERE datname = $1`, [dbName]);
+    if (res.rowCount === 0) {
+      console.log(`⏳ Database "${dbName}" does not exist. Creating...`);
+      await client.query(`CREATE DATABASE ${dbName}`);
+      console.log(`✅ Database "${dbName}" created successfully!`);
+    } else {
+      console.log(`✅ Database "${dbName}" exists.`);
+    }
+  } catch (err) {
+    console.error(`❌ Failed to check/create database. Is PostgreSQL running?`, err.message);
+    process.exit(1);
+  } finally {
+    await client.end();
+  }
+}
 
 async function migrate() {
+  await createDatabaseIfNotExists();
+  
+  // Require the pool *after* ensuring the DB exists
+  const pool = require('./db');
   const client = await pool.connect();
 
   try {

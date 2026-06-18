@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "postinstall": "cd server && npm install",
+    "setup": "node server/migrate.js",
     "start": "concurrently -n \"API,WEB\" -c \"cyan.bold,blue.bold\" \"npm run api\" \"npm run dev\"",
     "api": "cd server && node index.js",
     "dev": "vite",
