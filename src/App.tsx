@@ -233,7 +233,7 @@ function App() {
           DayEx &copy; {new Date().getFullYear()} &bull; Built with React + TypeScript + Glassmorphism CSS.
         </div>
         <div style={{ fontSize: '0.75rem' }}>
-          All data is saved locally in your browser. Read our <a href="#privacy" onClick={(e) => { e.preventDefault(); alert("DayEx stores all details strictly in your local storage. No information is transmitted across any network."); }}>Privacy Policy</a>.
+          Powered by PostgreSQL. All data is saved securely in your local database. Read our <a href="#privacy" onClick={(e) => { e.preventDefault(); alert("DayEx stores all details strictly in your local PostgreSQL database. No information is transmitted to the cloud or third-party servers."); }}>Privacy Policy</a>.
         </div>
       </footer>
     </div>
