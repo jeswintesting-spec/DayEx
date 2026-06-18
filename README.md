@@ -233,6 +233,7 @@ Then open **[http://localhost:5173](http://localhost:5173)** in your browser.
 - **Sort by month** — group expenses by month (newest/oldest first)
 - **Loading & error states** — spinner while connecting to DB, error screen if API is down with the exact command to fix it
 - **Responsive layout** — mobile floating action button, header collapses on small screens
+- **Progressive Web App (PWA)** — installable on mobile and desktop via `vite-plugin-pwa`, complete with manifest, offline service worker, and 192x192 / 512x512 icons
 
 ### ⏭️ Skipped (and why)
 | Feature | Reason skipped |
