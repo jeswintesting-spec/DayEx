@@ -173,31 +173,15 @@ Expected output:
 🎉 Migration complete! Database is ready.
 ```
 
-### 7. Start the API server
+### 7. Start the app
 
-Open a terminal in `server/` and run:
-
-```bash
-cd server
-node index.js
-```
-
-Expected output:
-```
-🚀 DayEx API running at http://localhost:3001
-   Health: http://localhost:3001/api/health
-✅ Connected to PostgreSQL database
-```
-
-> Keep this terminal open. The API must be running before the frontend loads.
-
-### 8. Start the frontend
-
-Open a **second terminal** in the project root:
+Open a terminal in the project root and run:
 
 ```bash
-npm run dev
+npm start
 ```
+
+This will automatically start both the Node.js API server (on port 3001) and the Vite frontend (on port 5173) simultaneously.
 
 Then open **[http://localhost:5173](http://localhost:5173)** in your browser.
 
@@ -251,9 +235,7 @@ Then open **[http://localhost:5173](http://localhost:5173)** in your browser.
 
 ## Known Rough Edges
 
-1. **Two terminals required** — The API server (`server/`) and the Vite dev server must be started separately. There is no `concurrently` setup yet. To fix: `npm install -D concurrently` and add a root-level `"dev": "concurrently \"node server/index.js\" \"vite\""` script.
-
-2. **`DB_PASSWORD` in `.env` is committed** — The `.env` file ships with a default password for convenience. For any deployment beyond localhost, add `server/.env` to `.gitignore` and use environment secrets.
+1. **`DB_PASSWORD` in `.env` is committed** — The `.env` file ships with a default password for convenience. For any deployment beyond localhost, add `server/.env` to `.gitignore` and use environment secrets.
 
 3. **Client-side filtering on full dataset** — All expenses are fetched on load and filtered in-memory. For > ~5,000 records this will feel slow. Fix: add `?search=`, `?start=`, `?end=`, `?category=` server-side filtering (the API already supports `?search=` and `?category=`).
 
