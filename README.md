@@ -86,8 +86,10 @@ rifafy/
 ## Prerequisites
 
 - **Node.js** ≥ 18 — [nodejs.org](https://nodejs.org)
-- **PostgreSQL 18** via [Postgres.app](https://postgresapp.com) (macOS) — binary is at `/Applications/Postgres.app/Contents/Versions/18/bin/psql`
-- Postgres.app must be **running** before starting the backend
+- **PostgreSQL 18** installed and running on your system:
+  - **macOS:** Recommended via [Postgres.app](https://postgresapp.com) or Homebrew (`brew install postgresql@18`)
+  - **Windows:** Download the official installer from [postgresql.org](https://www.postgresql.org/download/windows/)
+  - **Linux (Ubuntu/Debian):** `sudo apt install postgresql`
 
 ---
 
@@ -130,11 +132,20 @@ PORT=3001
 
 ### 5. Create the database
 
+Depending on your operating system, open a terminal (or command prompt) and run the command to create the database:
+
+**macOS (if using Postgres.app):**
 ```bash
 /Applications/Postgres.app/Contents/Versions/18/bin/psql -U postgres -c "CREATE DATABASE dayex_db;"
 ```
 
-> **On Linux/Windows with system PostgreSQL:** just run `psql -U postgres -c "CREATE DATABASE dayex_db;"`
+**Windows / macOS (Homebrew) / Linux (with configured paths):**
+```bash
+psql -U postgres -c "CREATE DATABASE dayex_db;"
+```
+
+> **Note for Linux users:** You may need to run this as the postgres user:
+> `sudo -u postgres psql -c "CREATE DATABASE dayex_db;"`
 
 ### 6. Run migrations & seed data
 
