@@ -99,7 +99,22 @@ rifafy/
 
 ---
 
-## Running from Scratch
+## Quick Start
+
+### The "One-Click" Method (No Terminal Required)
+
+If you don't want to type commands, you can just double-click the included start scripts after downloading or cloning the folder:
+
+- **Windows:** Double-click `start.bat`
+- **Mac / Linux:** Double-click `start.sh` (or run `./start.sh` in terminal)
+
+These scripts will automatically install everything, configure the database, and launch the app in your browser!
+
+---
+
+## Manual Terminal Setup
+
+If you prefer to run things manually or the one-click scripts don't work for you, follow these steps:
 
 ### 1. Clone the repo
 
