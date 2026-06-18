@@ -12,6 +12,12 @@
 
 DayEx is a full-stack expense management web app designed for tracking daily spending in Indian Rupees (₹). It features a glassmorphism dark UI, real-time category charts, budget alerts, and complete CRUD backed by a real PostgreSQL database — not `localStorage`.
 
+<div align="center">
+  <img src="screenshots/dashboard.png" width="48%" alt="DayEx Dashboard" />
+  &nbsp;
+  <img src="screenshots/expenses.png" width="48%" alt="DayEx Expenses View" />
+</div>
+
 ---
 
 ## Tech Stack
